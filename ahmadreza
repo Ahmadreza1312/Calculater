@@ -1,0 +1,84 @@
+from tkinter import *
+
+# ========================== settings ========================
+
+ma = Tk()
+ma .title('Calculater')
+ma.geometry('380x610')
+ma.resizable(width=False, height=False)
+color = "silver"
+operator = ''
+text_input = StringVar()
+
+# ========================== func ==========================
+
+def btn_click(numbers):
+    global operator
+    operator = operator + str(numbers)
+    text_input.set(operator)
+
+
+def btn_clear():
+    global operator
+    operator = ''
+    text_input.set('')
+
+
+def btnEqualsInput():
+    global operator
+    sumup = str(eval(operator))
+    text_input.set(sumup)
+    operator = ""
+
+# ========================== Buttons ==========================
+
+
+text = Entry(ma, font=('arial', 20, 'bold'), textvariable=text_input, bd=40,
+             insertwidth=5, bg='powder blue', justify='right').grid(columnspan=4)
+# ==================================================================================
+btn_baz = Button(ma, padx=22, pady=16, bd=8, fg='black' ,bg='silver', font=('arial', 20, 'bold'),
+                 text='(', command=lambda: btn_click('(')).grid(row=1, column=0)
+btn_baste = Button(ma, padx=22, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                   text=')', command=lambda: btn_click(')')).grid(row=1, column=1)
+btn_clr = Button(ma, padx=20, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                 text='c', command=btn_clear).grid(row=1, column=2)
+btn_tagh = Button(ma, padx=22, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                  text='/', command=lambda: btn_click('/')).grid(row=1, column=3)
+# ==================================================================================
+btn_7 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='7', command=lambda: btn_click(7)).grid(row=2, column=0)
+btn_8 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='8', command=lambda: btn_click(8)).grid(row=2, column=1)
+btn_9 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='9', command=lambda: btn_click(9)).grid(row=2, column=2)
+btn_zarb = Button(ma, padx=18, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                  text='*', command=lambda: btn_click('*')).grid(row=2, column=3)
+# ==================================================================================
+btn_4 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='4', command=lambda: btn_click(4)).grid(row=3, column=0)
+btn_5 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='5', command=lambda: btn_click(5)).grid(row=3, column=1)
+btn_6 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='6', command=lambda: btn_click(6)).grid(row=3, column=2)
+btn_menha = Button(ma, padx=20, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                   text='-', command=lambda: btn_click('-')).grid(row=4, column=3)
+# ==================================================================================
+btn_1 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='1', command=lambda: btn_click(1)).grid(row=4, column=0)
+btn_2 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='2', command=lambda: btn_click(2)).grid(row=4, column=1)
+btn_3 = Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='3', command=lambda: btn_click(3)).grid(row=4, column=2)
+btn_pluse = Button(ma, padx=18, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                   text='+', command=lambda: btn_click('+')).grid(row=3, column=3)
+# ==================================================================================
+btn_dot= Button(ma, padx=22, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+               text='.', command=lambda: btn_click('.')).grid(row=5, column=0)
+btn_sefr= Button(ma, padx=19, pady=16, bd=8, fg='black', font=('arial', 20, 'bold'),
+               text='0', command=lambda: btn_click(0)).grid(row=5, column=1)
+btn_darsad= Button(ma, padx=15, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+               text='%', command=lambda: btn_click('%')).grid(row=5, column=2)
+btn_mosavi = Button(ma, padx=17, pady=16, bd=8, fg='black',bg='silver', font=('arial', 20, 'bold'),
+                    text='=', command=btnEqualsInput).grid(row=5, column=3)
+
+ma = mainloop()
